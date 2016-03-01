@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
+scope :api do
   resources :rescues, only: [] do
     resources :animals, except: [:new, :edit]
   end
+end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
