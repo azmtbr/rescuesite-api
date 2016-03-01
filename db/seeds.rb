@@ -9,3 +9,4 @@
 Rescue.create! name:"Fearless Kitty Rescue"
 Animal.create! name:  "Koni", rescue_id: 1
 Animal.create! name:  "Molly", rescue_id: 1
+Animal.create! name:  "Aspen", rescue_id: 1, sex: 'male', dob: 11/04/1967, breed: 'dog'
