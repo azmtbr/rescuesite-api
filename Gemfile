@@ -11,6 +11,10 @@ gem 'rack-cors', :require => 'rack/cors'
 
 gem 'sqlite3'
 
+gem 'figaro'
+
+gem 'sendgrid'
+
 
 
 # To use ActiveModel has_secure_password
