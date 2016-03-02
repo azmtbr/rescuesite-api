@@ -9,7 +9,17 @@ gem 'spring', :group => :development
 
 gem 'rack-cors', :require => 'rack/cors'
 
-gem 'sqlite3'
+
+
+group :production do
+   gem 'pg'
+   gem 'rails_12factor'
+ end
+
+ group :development do
+   gem 'sqlite3'
+   gem 'better_errors'
+ end
 
 gem 'figaro'
 
