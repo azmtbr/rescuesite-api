@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-scope :api do
+scope :api, :defaults => { :format => 'json' } do
   resources :rescues, only: [] do
     resources :animals, except: [:new, :edit]
   end
