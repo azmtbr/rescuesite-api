@@ -5,7 +5,7 @@ class ContactsController < ApplicationController
   end
 
   def create
-    Contact.send_contact_form(:name, :email, :message).deliver_now
+    Contact.send_contact_form(params[:name], params[:email], params[:message]).deliver_now
   end
 
 end
