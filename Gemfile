@@ -25,6 +25,10 @@ gem 'figaro'
 
 gem 'sendgrid'
 
+gem 'active_model_serializers'
+
+gem 'pry-rails'
+
 
 
 # To use ActiveModel has_secure_password

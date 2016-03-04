@@ -43,7 +43,7 @@ Rails.application.configure do
 
   config.action_mailer.smtp_settings = {
       address:        'smtp.sendgrid.net',
-      port:           '2525',
+      port:           '587',
       authentication: :plain,
       user_name:      ENV['SENDGRID_USERNAME'],
       password:       ENV['SENDGRID_PASSWORD'],
@@ -51,5 +51,5 @@ Rails.application.configure do
       enable_starttls_auto: true
   }
 
-  config.action_mailer.default_url_options = { host: "localhost:4000" }
+  config.action_mailer.default_url_options = { host: "myrescuesite.com" }
 end
