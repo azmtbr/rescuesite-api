@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160229180558) do
+ActiveRecord::Schema.define(version: 20160304174238) do
 
   create_table "animals", force: :cascade do |t|
     t.string   "name"
@@ -21,14 +21,34 @@ ActiveRecord::Schema.define(version: 20160229180558) do
     t.integer  "rescue_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "slug"
   end
 
   add_index "animals", ["rescue_id"], name: "index_animals_on_rescue_id"
+  add_index "animals", ["slug"], name: "index_animals_on_slug", unique: true
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
 
   create_table "rescues", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "email"
+    t.string   "slug"
   end
+
+  add_index "rescues", ["email"], name: "index_rescues_on_email", unique: true
+  add_index "rescues", ["slug"], name: "index_rescues_on_slug", unique: true
 
 end

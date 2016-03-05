@@ -29,6 +29,8 @@ gem 'active_model_serializers'
 
 gem 'pry-rails'
 
+gem 'friendly_id', '~> 5.1.0'
+
 
 
 # To use ActiveModel has_secure_password

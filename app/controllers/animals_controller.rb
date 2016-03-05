@@ -1,10 +1,10 @@
 class AnimalsController < ApplicationController
-  before_action :set_animal, only: [:show, :update, :destroy]
+  before_action :set_animal, only: [:index, :show, :update, :destroy]
 
   # GET /animals
   # GET /animals.json
   def index
-    @rescue = Rescue.find(params[:rescue_id])
+    @rescue = Rescue.friendly.find(params[:rescue_id])
     @animals = @rescue.animals
 
     render json: ActiveModel::ArraySerializer.new(@animals, each_serializer: AnimalSerializer).to_json
@@ -31,7 +31,7 @@ class AnimalsController < ApplicationController
   # PATCH/PUT /animals/1
   # PATCH/PUT /animals/1.json
   def update
-    @animal = Animal.find(params[:id])
+    @animal = Animal.friendly.find(params[:id])
 
     if @animal.update(animal_params)
       head :no_content
