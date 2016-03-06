@@ -31,8 +31,6 @@ class AnimalsController < ApplicationController
   # PATCH/PUT /animals/1
   # PATCH/PUT /animals/1.json
   def update
-    @animal = Animal.find(params[:id])
-
     if @animal.update(animal_params)
       head :no_content
     else
@@ -51,7 +49,7 @@ class AnimalsController < ApplicationController
   private
 
     def set_animal
-      @animal = Animal.all.find  {|a| a.name.downcase == params[:id]}
+      @animal = Animal.friendly.find(params[:id])
     end
 
     def animal_params
