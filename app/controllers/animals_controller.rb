@@ -1,5 +1,5 @@
 class AnimalsController < ApplicationController
-  before_action :set_animal, only: [:index, :show, :update, :destroy]
+  before_action :set_animal, only: [:show, :update, :destroy]
 
   # GET /animals
   # GET /animals.json
