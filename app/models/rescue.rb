@@ -11,8 +11,4 @@ class Rescue < ActiveRecord::Base
       [:name, :rescue_id]
     ]
   end
-
-
-
-
 end
