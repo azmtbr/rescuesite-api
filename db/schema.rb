@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308000140) do
+ActiveRecord::Schema.define(version: 20160308215830) do
 
   create_table "adoptions", force: :cascade do |t|
     t.string   "name"
@@ -28,7 +28,10 @@ ActiveRecord::Schema.define(version: 20160308000140) do
     t.boolean  "age"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "rescue_id"
   end
+
+  add_index "adoptions", ["rescue_id"], name: "index_adoptions_on_rescue_id"
 
   create_table "animals", force: :cascade do |t|
     t.string   "name"

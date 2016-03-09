@@ -1,6 +1,7 @@
 class AdoptionsController < ApplicationController
   def index
-    @adoptions = Adoption.all
+    @rescue = Rescue.friendly.find(params[:rescue_id])
+    @adoptions = @rescue.adoptions
 
     render json: @adoptions
   end
@@ -35,6 +36,6 @@ class AdoptionsController < ApplicationController
 
   def adoption_params
     params.permit(:name, :email, :age, :street_address, :mailing_address, :city,
-                  :state, :postal_code, :home_phone, :cell_phone, :work_phone, :desired_animal)
+                  :state, :postal_code, :home_phone, :cell_phone, :work_phone, :desired_animal, :rescue_id)
   end
 end
