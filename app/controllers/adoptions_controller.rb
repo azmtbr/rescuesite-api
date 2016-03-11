@@ -17,7 +17,7 @@ class AdoptionsController < ApplicationController
     @adoption = Adoption.new(adoption_params)
 
     if @adoption.save
-      render json: @adoption, status: :created  
+      render json: @adoption, status: :created
     else
       render json: @adoption.errors, status: :unprocessable_entity
     end
