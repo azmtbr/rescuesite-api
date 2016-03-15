@@ -7,7 +7,7 @@ class AdoptionsController < ApplicationController
   end
 
   def show
-    render json: @adoption
+    render json: Adoption.find(params[:id])
   end
 
   def new
