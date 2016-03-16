@@ -3,7 +3,7 @@ class AdoptionsController < ApplicationController
     @rescue = Rescue.friendly.find(params[:rescue_id])
     @adoptions = @rescue.adoptions
 
-    render json: @adoptions
+    render json: ActiveModel::ArraySerializer.new(@adoptions, each_serializer: AdoptionSerializer).to_json
   end
 
   def show
