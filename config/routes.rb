@@ -5,11 +5,10 @@ Rails.application.routes.draw do
 
 scope :api, :defaults => { :format => 'json' } do
   resources :rescues, only: [] do
-    resources :animals, except: [:new, :edit] do
-      resources :adoptions
-    end
+    resources :animals, except: [:new, :edit]
     resources :contacts, only: [:create]
     resources :adoptionnotices, controller: :adoption_notice, only: :create
+    resources :adoptions
 
   end
 end

@@ -1,7 +1,9 @@
 class AdoptionsController < ApplicationController
+
   def index
     @rescue = Rescue.friendly.find(params[:rescue_id])
     @adoptions = @rescue.adoptions
+
 
     render json: ActiveModel::ArraySerializer.new(@adoptions, each_serializer: AdoptionSerializer).to_json
   end
@@ -36,6 +38,6 @@ class AdoptionsController < ApplicationController
 
   def adoption_params
     params.permit(:first_name, :last_name, :email, :age, :street_address, :mailing_address, :city,
-                  :state, :postal_code, :home_phone, :cell_phone, :work_phone, :rescue_id)
+                  :state, :postal_code, :home_phone, :cell_phone, :work_phone, :rescue_id, :animal_id)
   end
 end
