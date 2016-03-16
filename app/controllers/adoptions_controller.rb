@@ -35,7 +35,7 @@ class AdoptionsController < ApplicationController
   private
 
   def adoption_params
-    params.permit(:name, :email, :age, :street_address, :mailing_address, :city,
-                  :state, :postal_code, :home_phone, :cell_phone, :work_phone, :desired_animal, :rescue_id)
+    params.permit(:first_name, :last_name, :email, :age, :street_address, :mailing_address, :city,
+                  :state, :postal_code, :home_phone, :cell_phone, :work_phone, :rescue_id)
   end
 end

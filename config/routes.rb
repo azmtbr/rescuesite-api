@@ -5,10 +5,12 @@ Rails.application.routes.draw do
 
 scope :api, :defaults => { :format => 'json' } do
   resources :rescues, only: [] do
-    resources :animals, except: [:new, :edit]
+    resources :animals, except: [:new, :edit] do
+      resources :adoptions
+    end
     resources :contacts, only: [:create]
     resources :adoptionnotices, controller: :adoption_notice, only: :create
-    resources :adoptions
+
   end
 end
   # The priority is based upon order of creation: first created -> highest priority.
