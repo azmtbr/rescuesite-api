@@ -3,6 +3,12 @@ class Animal < ActiveRecord::Base
   has_many :adoptions
   validates_presence_of :rescue_id, :name
 
+  # Paperclip
+  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+  validates_attachment_file_name :image, matches: [/png\Z/, /jpe?g\Z/, /JPE?G\Z/]
+
+  # FriendlyId
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
 

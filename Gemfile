@@ -28,8 +28,12 @@ gem 'sendgrid'
 gem 'active_model_serializers'
 
 gem 'pry-rails'
+gem 'pry-nav'
+gem 'pry-stack_explorer'
 
 gem 'friendly_id', '~> 5.1.0'
+
+gem 'paperclip', '~> 4.3'
 
 
 

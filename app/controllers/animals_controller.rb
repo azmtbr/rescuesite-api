@@ -13,7 +13,8 @@ class AnimalsController < ApplicationController
   # GET /animals/1
   # GET /animals/1.json
   def show
-    render json: @animal
+    render json: AnimalSerializer.new(@animal, root:false).to_json
+
   end
 
   # POST /animals
@@ -32,10 +33,13 @@ class AnimalsController < ApplicationController
   # PATCH/PUT /animals/1.json
   def update
     if @animal.update(animal_params)
+      @animal.update! image: params[:file]
       head :no_content
     else
       render json: @animal.errors, status: :unprocessable_entity
     end
+
+
   end
 
   # DELETE /animals/1
@@ -53,6 +57,6 @@ class AnimalsController < ApplicationController
     end
 
     def animal_params
-      params.require(:animal).permit(:name, :breed, :sex, :dob, :rescue_id)
+      params.permit(:animal).permit(:name, :breed, :sex, :dob, :rescue_id)
     end
 end
