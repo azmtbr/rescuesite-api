@@ -34,7 +34,7 @@ class AnimalsController < ApplicationController
   def update
     if @animal.update(animal_params)
       @animal.update! image: params[:file]
-      head :no_content
+      
     else
       render json: @animal.errors, status: :unprocessable_entity
     end
