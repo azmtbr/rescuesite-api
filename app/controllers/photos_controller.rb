@@ -20,7 +20,7 @@ class PhotosController < ApplicationController
   end
 
   def new
-    @gallery = Gallery.find(params[:gallery_id])
+    @gallery = Gallery.find(params[:id])
     @photo = @gallery.photos.build
 
     render json: @photo

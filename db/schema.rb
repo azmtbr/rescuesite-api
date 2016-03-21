@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160319230329) do
+ActiveRecord::Schema.define(version: 20160320235226) do
 
   create_table "adoptions", force: :cascade do |t|
     t.string   "email"
@@ -68,13 +68,11 @@ ActiveRecord::Schema.define(version: 20160319230329) do
 
   create_table "galleries", force: :cascade do |t|
     t.integer  "animal_id"
-    t.integer  "rescue_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_index "galleries", ["animal_id"], name: "index_galleries_on_animal_id"
-  add_index "galleries", ["rescue_id"], name: "index_galleries_on_rescue_id"
 
   create_table "photos", force: :cascade do |t|
     t.string   "gallery_image_file_name"
@@ -83,7 +81,10 @@ ActiveRecord::Schema.define(version: 20160319230329) do
     t.datetime "gallery_image_updated_at"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.integer  "gallery_id"
   end
+
+  add_index "photos", ["gallery_id"], name: "index_photos_on_gallery_id"
 
   create_table "rescues", force: :cascade do |t|
     t.string   "name"
