@@ -1,10 +1,13 @@
 class GalleriesController < ApplicationController
 
+  def index
+    @galleries = Gallery.all
+  end
+
   def show
     @gallery = Gallery.find(params[:id])
-    @photos = @gallery.photos
 
-    render json: @gallery
+    render json: GallerySerializer.new(@gallery, root:false).to_json
   end
 
 
@@ -13,16 +16,19 @@ class GalleriesController < ApplicationController
     @gallery = Gallery.new(gallery_params)
 
     if @gallery.save
-
-      if params[:gallery_images]
-        params[:gallery_images].each { |gallery_image|
-          @gallery.photos.create(gallery_image: gallery_image)
-        }
-      end
-      render json: @adoption, status: :created
-
+      render json: @gallery, status: :created
     else
-      render json: @adoption.errors, status: :unprocessable_entity
+      render json: @gallery.errors, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    @gallery = Gallery.find(params[:id])
+
+    if @gallery.update(gallery_params)
+      head :no_content
+    else
+      render json: @photo.errors, status: :unprocessable_entity
     end
   end
 

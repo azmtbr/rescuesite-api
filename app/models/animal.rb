@@ -1,8 +1,8 @@
 class Animal < ActiveRecord::Base
   belongs_to :rescue
   has_many :adoptions
-  has_many :galleries
-  validates_presence_of :rescue_id, :name
+  has_one :gallery, dependent: :destroy
+  validates_presence_of :rescue_id, :gallery, :name
 
   # Paperclip
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: ->(attachment) { ActionController::Base.helpers.asset_path('missing.png') }

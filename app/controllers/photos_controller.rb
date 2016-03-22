@@ -32,7 +32,7 @@ class PhotosController < ApplicationController
     @photo = Photo.new(photo_params)
 
     if @photo.save
-      render json: @photo, status: :created, location: @photo
+      render json: @photo, status: :created
     else
       render json: @photo.errors, status: :unprocessable_entity
     end

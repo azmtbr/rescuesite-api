@@ -20,7 +20,8 @@ class AnimalsController < ApplicationController
   # POST /animals
   # POST /animals.json
   def create
-    @animal = Animal.new(animal_params)
+    @animal = Animal.new(animal_params.merge({rescue_id: params[:rescue_id]}))
+    @animal.gallery = Gallery.new
 
     if @animal.save
       render json: @animal, status: :created, location: @animal
@@ -34,7 +35,7 @@ class AnimalsController < ApplicationController
   def update
     if @animal.update(animal_params)
       @animal.update! image: params[:file]
-      
+
     else
       render json: @animal.errors, status: :unprocessable_entity
     end
@@ -57,6 +58,6 @@ class AnimalsController < ApplicationController
     end
 
     def animal_params
-      params.permit(:animal).permit(:name, :breed, :sex, :dob, :rescue_id)
+      params.require(:animal).permit(:name, :breed, :sex, :dob, :rescue_id)
     end
 end

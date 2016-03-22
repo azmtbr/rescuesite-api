@@ -1,7 +1,8 @@
 class GallerySerializer < ActiveModel::Serializer
-  attributes :id, :animal, :photos
+  attributes :id, :photos
 
-  def animal
-    AnimalSerializer.new object.animal, root: false
+  def photos
+    ActiveModel::ArraySerializer.new(object.photos, each_serializer: PhotoSerializer)
   end
+
 end
