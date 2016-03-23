@@ -13,7 +13,8 @@ class GalleriesController < ApplicationController
 
 
   def create
-    @gallery = Gallery.new(gallery_params)
+    @animal = Animal.find(params[:animal_id])
+    @gallery = @animal.gallery.build(gallery_params)
 
     if @gallery.save
       render json: @gallery, status: :created

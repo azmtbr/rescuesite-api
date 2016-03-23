@@ -1,5 +1,5 @@
 class AddGalleryidToAnimal < ActiveRecord::Migration
   def change
-    add_reference :animals, :gallery, index: true, foreign_key: true
+    add_column :animals, :gallery_id, :integer
   end
 end

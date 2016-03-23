@@ -1,5 +1,5 @@
 class AnimalSerializer < ActiveModel::Serializer
-  attributes :id, :thumbnail_url, :original_url, :medium_url, :name, :dob, :breed, :sex, :slug, :gallery_id
+  attributes :id, :thumbnail_url, :large_url, :medium_url, :name, :dob, :breed, :sex, :slug, :gallery_id
 
   def thumbnail_url
     object.image.url :thumb
@@ -9,11 +9,11 @@ class AnimalSerializer < ActiveModel::Serializer
     object.image.url :medium
   end
 
-  def original_url
-    object.image.url :original
+  def large_url
+    object.image.url :large
   end
 
   def gallery_id
-    object.gallery.try :id 
+    object.gallery_id
   end
 end
