@@ -29,8 +29,7 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
-    @gallery = Gallery.find(params[:gallery_id])
-    @photo = @gallery.photos.build(params[:gallery_image])
+    @photo = Photo.new(photo_params.merge(gallery_id: params[:gallery_id]))
 
     if @photo.save
       render json: @photo, status: :created
@@ -67,6 +66,6 @@ class PhotosController < ApplicationController
     end
 
     def photo_params
-      params.permit(:photo).permit(:gallery_id, :gallery_image)
+      params.require(:photo).permit(:gallery_image)
     end
 end
