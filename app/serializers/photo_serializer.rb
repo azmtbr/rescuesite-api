@@ -8,4 +8,6 @@ class PhotoSerializer < ActiveModel::Serializer
   def large_url
     object.gallery_image.url :large
   end
+
+
 end

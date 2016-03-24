@@ -7,7 +7,7 @@ scope :api, :defaults => { :format => 'json' } do
     resources :contacts, only: [:create]
     resources :adoptionnotices, controller: :adoption_notice, only: :create
     resources :adoptions
-    resources :galleries do
+    resources :galleries, only: [:show] do
       resources :photos
     end
 

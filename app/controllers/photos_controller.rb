@@ -5,10 +5,10 @@ class PhotosController < ApplicationController
   # GET /photos.json
   def index
     @gallery = Gallery.find(params[:gallery_id])
-
     @photos = @gallery.photos
 
-    render json: @photos
+    render json: ActiveModel::ArraySerializer.new(@photos, each_serializer: PhotoSerializer).to_json
+
   end
 
   # GET /photos/1

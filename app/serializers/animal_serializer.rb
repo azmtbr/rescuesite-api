@@ -14,6 +14,6 @@ class AnimalSerializer < ActiveModel::Serializer
   end
 
   def gallery_id
-    object.gallery_id
+    object.gallery.try :id
   end
 end

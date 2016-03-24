@@ -1,7 +1,7 @@
 class Animal < ActiveRecord::Base
   belongs_to :rescue
   has_many :adoptions
-  has_many :galleries, dependent: :destroy
+  has_one :gallery, dependent: :destroy
   validates_presence_of :rescue_id, :name
 
   # Paperclip

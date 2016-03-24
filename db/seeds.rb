@@ -8,9 +8,9 @@
 
 Rescue.create! name: "Fearless", email:"fearless@email.com"
 Rescue.create! name: "Foothills Animal", email:"foothillsanimalrescue@email.com"
-Animal.create! name: "Koni", rescue_id: 1, sex: 'female', dob: 11/04/1967, breed: 'dog', gallery_id: 4
-Animal.create! name: "Molly", rescue_id: 1, sex: "female", dob: 11/04/1967, breed: "dog", gallery_id: 4
-Animal.create! name: "Aspen", rescue_id: 1, sex: 'male', dob: 11/04/1967, breed: 'dog', gallery_id: 4
+Animal.create! name: "Koni", rescue_id: 1, sex: 'female', dob: 11/04/1967, breed: 'dog', gallery: Gallery.new
+Animal.create! name: "Molly", rescue_id: 1, sex: "female", dob: 11/04/1967, breed: "dog", gallery: Gallery.new
+Animal.create! name: "Aspen", rescue_id: 1, sex: 'male', dob: 11/04/1967, breed: 'dog', gallery: Gallery.new
 Adoption.create! animal: Animal.first, rescue_id: 1, first_name: "Matt", last_name: "Thompson", email: "matt@example.org"
 Adoption.create! animal: Animal.last, rescue_id: 1, first_name: "Jon", last_name: "Clarkson", email: "jon@example.org"
-Gallery.create! animal_id: 2, id: 4
+# Gallery.create! animal_id: 2, id: 4
