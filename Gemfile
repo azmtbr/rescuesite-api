@@ -9,6 +9,8 @@ gem 'spring', :group => :development
 
 gem 'rack-cors', :require => 'rack/cors'
 
+gem 'bcrypt'
+
 
 
 group :production do
