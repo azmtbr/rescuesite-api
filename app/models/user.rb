@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  belongs_to :rescue
+
   before_save { self.email = email.downcase }
 
   validates :password, presence: true, length: { minimum: 6 }, if: "password_digest.nil?"
