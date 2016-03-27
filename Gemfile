@@ -11,6 +11,10 @@ gem 'rack-cors', :require => 'rack/cors'
 
 gem 'bcrypt'
 
+gem 'devise_token_auth'
+
+gem 'omniauth'
+
 
 
 group :production do
