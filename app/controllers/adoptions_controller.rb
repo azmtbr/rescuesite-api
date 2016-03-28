@@ -1,4 +1,5 @@
 class AdoptionsController < ApplicationController
+  before_action :authenticate_user!, except: [:show, :index, :create]
 
   def index
     @rescue = Rescue.friendly.find(params[:rescue_id])
