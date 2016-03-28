@@ -17,4 +17,10 @@ class UsersController < ApplicationController
       status: :unprocessable_entity
     end
   end
+
+  def destroy
+    @user.destroy
+
+    head :no_content
+  end
 end
