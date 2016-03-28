@@ -1,4 +1,12 @@
 class User < ActiveRecord::Base
+  # Include default devise modules.
+  devise :database_authenticatable, :registerable,
+          :recoverable, :rememberable, :trackable, :validatable,
+          :confirmable, :omniauthable
+
+  include DeviseTokenAuth::Concerns::User
+
+
   belongs_to :rescue
 
   before_save { self.email = email.downcase }
@@ -8,12 +16,12 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
+  # EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
 
   validates :email,
             presence: true,
             uniqueness: { case_sensetive: false },
-            length: { minimum: 3, maximum: 254 },
-            format: EMAIL_REGEX
+            length: { minimum: 3, maximum: 254 }
+            # format: EMAIL_REGEX
 
 end
