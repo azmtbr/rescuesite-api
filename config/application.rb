@@ -28,7 +28,7 @@ module RescuesiteApi
         origins '*'
         resource '*', :headers => :any,
                       :methods => [:get, :post, :patch, :options, :delete],
-                      :expose  => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+                      :expose  => ['access-token', 'expiry', 'token-type', 'uid', 'client']
       end
     end
   end
