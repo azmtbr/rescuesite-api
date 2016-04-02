@@ -3,6 +3,8 @@ class Rescue < ActiveRecord::Base
   has_many :animals
   has_many :adoptions
   has_many :users
+  has_one  :landing_gallery
+
 
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged

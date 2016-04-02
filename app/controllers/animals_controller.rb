@@ -15,7 +15,6 @@ class AnimalsController < ApplicationController
   # GET /animals/1.json
   def show
     render json: AnimalSerializer.new(@animal, root:false).to_json
-
   end
 
   # POST /animals
@@ -40,8 +39,6 @@ class AnimalsController < ApplicationController
     else
       render json: @animal.errors, status: :unprocessable_entity
     end
-
-
   end
 
   # DELETE /animals/1

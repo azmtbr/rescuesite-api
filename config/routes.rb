@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  get 'landing_gallery/show'
+
 scope :api, :defaults => { :format => 'json' } do
   mount_devise_token_auth_for 'User', at: 'auth'
   resources :rescues, only: [] do
@@ -9,7 +11,10 @@ scope :api, :defaults => { :format => 'json' } do
     resources :adoptionnotices, controller: :adoption_notice, only: :create
     resources :adoptions
     resources :users, only: [:new, :create]
-    resources :sessions, only: [:new, :create, :destroy]
+
+    resources :landing_galleries, only: [:show] do
+      resources :landing_images
+    end
     resources :galleries, only: [:show] do
       resources :photos
     end

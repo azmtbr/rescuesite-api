@@ -19,6 +19,7 @@ class RescuesController < ApplicationController
   # POST /animals.json
   def create
     @rescue = Rescue.new(rescue_params)
+    @rescue.landing_gallery = LandingGallery.new
 
     if @rescue.save
       render json: @rescue, status: :created, location: @rescue
