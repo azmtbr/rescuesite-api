@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
 
-
   get 'landing_gallery/show'
 
-scope :api, :defaults => { :format => 'json' } do
-  mount_devise_token_auth_for 'User', at: 'auth'
-  resources :rescues, only: [] do
+  scope :api, :defaults => { :format => 'json' } do
+    mount_devise_token_auth_for 'User', at: 'auth'
     resources :animals, except: [:new, :edit]
     resources :contacts, only: [:create]
     resources :adoptionnotices, controller: :adoption_notice, only: :create
@@ -15,12 +13,11 @@ scope :api, :defaults => { :format => 'json' } do
     resources :landing_galleries, only: [:show] do
       resources :landing_images
     end
+
     resources :galleries, only: [:show] do
       resources :photos
     end
-
   end
-end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

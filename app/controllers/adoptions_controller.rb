@@ -2,9 +2,7 @@ class AdoptionsController < ApplicationController
   before_action :authenticate_user!, except: [:create]
 
   def index
-    @rescue = Rescue.friendly.find(params[:rescue_id])
     @adoptions = @rescue.adoptions
-
 
     render json: ActiveModel::ArraySerializer.new(@adoptions, each_serializer: AdoptionSerializer).to_json
   end
@@ -17,7 +15,7 @@ class AdoptionsController < ApplicationController
   end
 
   def create
-    @adoption = Adoption.new(adoption_params)
+    @adoption = Adoption.new(adoption_params.merge(rescue: @rescue))
 
     if @adoption.save
       render json: @adoption, status: :created
@@ -39,6 +37,6 @@ class AdoptionsController < ApplicationController
 
   def adoption_params
     params.permit(:first_name, :last_name, :email, :age, :street_address, :mailing_address, :city,
-                  :state, :postal_code, :home_phone, :cell_phone, :work_phone, :rescue_id, :animal_id)
+                  :state, :postal_code, :home_phone, :cell_phone, :work_phone, :animal_id)
   end
 end

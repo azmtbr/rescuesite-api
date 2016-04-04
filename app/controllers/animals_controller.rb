@@ -5,7 +5,6 @@ class AnimalsController < ApplicationController
   # GET /animals
   # GET /animals.json
   def index
-    @rescue = Rescue.friendly.find(params[:rescue_id])
     @animals = @rescue.animals
 
     render json: ActiveModel::ArraySerializer.new(@animals, each_serializer: AnimalSerializer).to_json
@@ -20,7 +19,7 @@ class AnimalsController < ApplicationController
   # POST /animals
   # POST /animals.json
   def create
-    @animal = Animal.new(animal_params.merge({rescue_id: params[:rescue_id]}))
+    @animal = Animal.new(animal_params.merge({rescue: @rescue}))
     @animal.gallery = Gallery.new
 
     if @animal.save
@@ -56,6 +55,6 @@ class AnimalsController < ApplicationController
     end
 
     def animal_params
-      params.permit(:animal).permit(:name, :breed, :sex, :dob, :rescue_id)
+      params.permit(:animal).permit(:name, :breed, :sex, :dob)
     end
 end
