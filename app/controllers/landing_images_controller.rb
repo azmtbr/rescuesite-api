@@ -7,7 +7,7 @@ class LandingImagesController < ApplicationController
   # GET /landing_images.json
   def index
     @landing_gallery = LandingGallery.find(params[:landing_gallery_id])
-    @landing_images = @landing_gallery.photos
+    @landing_images = @landing_gallery.landing_images
 
     render json: ActiveModel::ArraySerializer.new(@landing_images, each_serializer: LandingImageSerializer).to_json
 

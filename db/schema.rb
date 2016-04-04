@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160402030919) do
+ActiveRecord::Schema.define(version: 20160404024042) do
 
   create_table "adoptions", force: :cascade do |t|
     t.string   "email"
@@ -109,10 +109,11 @@ ActiveRecord::Schema.define(version: 20160402030919) do
 
   create_table "rescues", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "email"
     t.string   "slug"
+    t.integer  "landing_gallery"
   end
 
   add_index "rescues", ["email"], name: "index_rescues_on_email", unique: true
