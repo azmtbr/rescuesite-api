@@ -49,9 +49,12 @@ class RescuesController < ApplicationController
   end
 
   private
+  def set_rescue
+      @rescue = Rescue.friendly.find(params[:id])
+   end
 
     def rescue_params
       params.require(:rescue).permit(:name, :email)
     end
-end
+
 end
