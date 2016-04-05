@@ -11,10 +11,10 @@ class UsersController < ApplicationController
     @user.password_confirmation = params[:user][:password_confirmation]
 
     if @user.save
-      status: :created
       create_session(@user)
+      head status: :created
     else
-      status: :unprocessable_entity
+      head status: :unprocessable_entity
     end
   end
 
