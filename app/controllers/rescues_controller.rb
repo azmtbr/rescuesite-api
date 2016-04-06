@@ -1,6 +1,6 @@
 class RescuesController < ApplicationController
   before_action :set_rescue, only: [:show, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
 
   # GET /animals
   # GET /animals.json
