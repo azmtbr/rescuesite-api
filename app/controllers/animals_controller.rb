@@ -1,5 +1,5 @@
 class AnimalsController < ApplicationController
-  before_action :set_animal, only: [:show, :update, :destroy]
+  before_action :set_animal, only: [:show, :destroy]
   before_action :authenticate_user!, except: [:show, :index]
 
   # GET /animals
@@ -33,8 +33,9 @@ class AnimalsController < ApplicationController
   # PATCH/PUT /animals/1
   # PATCH/PUT /animals/1.json
   def update
-    if @animal.update(animal_params)
-      @animal.update! image: params[:file]
+    @animal = Animal.friendly.find(params[:id])
+    if @animal.update(update_params)
+       @animal.update! image: params[:file]
 
     else
       render json: @animal.errors, status: :unprocessable_entity
@@ -56,6 +57,10 @@ class AnimalsController < ApplicationController
     end
 
     def animal_params
-      params.permit(:animal).permit(:name, :breed, :sex, :dob, :rescue_id)
+      params.permit(:name, :breed, :sex, :dob, :rescue_id)
+    end
+
+    def update_params
+      params.permit(:name, :breed, :sex, :dob)
     end
 end

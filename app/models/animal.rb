@@ -6,8 +6,8 @@ class Animal < ActiveRecord::Base
 
   # Paperclip
   has_attached_file :image,
-                    styles: { medium: "300x300>", large: "600x600>", thumb: "100x100>" },
-                    default_url: ->(attachment) { ActionController::Base.helpers.asset_path('missing.png') }
+                    styles: { medium: "600x600>", large: "900x900>", thumb: "150x150>" },
+                    default_url: 'https://s3-us-west-2.amazonaws.com/rescue-site/missing/missing.png' 
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   validates_attachment_file_name :image, matches: [/png\Z/, /jpe?g\Z/, /JPE?G\Z/]
 
