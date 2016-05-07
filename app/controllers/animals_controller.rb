@@ -35,7 +35,6 @@ class AnimalsController < ApplicationController
   def update
     if @animal.update(animal_params)
       @animal.update! image: params[:file]
-
     else
       render json: @animal.errors, status: :unprocessable_entity
     end
@@ -56,6 +55,6 @@ class AnimalsController < ApplicationController
     end
 
     def animal_params
-      params.permit(:animal).permit(:name, :breed, :sex, :dob, :rescue_id)
+      params.permit(:name, :breed, :sex, :dob)
     end
 end

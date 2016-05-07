@@ -14,6 +14,8 @@ User.create! email: "me@example.org", password: "password", password_confirmatio
 Animal.create! name: "Koni", rescue_id: 1, sex: 'female', dob: DateTime.now, breed: 'dog', gallery: Gallery.new
 Animal.create! name: "Molly", rescue_id: 1, sex: "female", dob: DateTime.now, breed: "dog", gallery: Gallery.new
 Animal.create! name: "Aspen", rescue_id: 1, sex: 'male', dob: DateTime.now, breed: 'dog', gallery: Gallery.new
+Animal.create! name: "Beaker", rescue_id: 1, sex: "Male", dob: DateTime.now, breed: "Siamese", gallery: Gallery.new
+Animal.create! name: "Jerry", rescue_id: 1, sex: "Male", dob: DateTime.now, breed: "Cat", gallery: Gallery.new
 Adoption.create! animal: Animal.first, rescue_id: 1, first_name: "Matt", last_name: "Thompson", email: "matt@example.org"
 Adoption.create! animal: Animal.last, rescue_id: 1, first_name: "Jon", last_name: "Clarkson", email: "jon@example.org"
 # Gallery.create! animal_id: 2, id: 4

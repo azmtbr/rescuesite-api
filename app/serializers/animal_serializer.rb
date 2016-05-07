@@ -1,5 +1,5 @@
 class AnimalSerializer < ActiveModel::Serializer
-  attributes :id, :thumbnail_url, :large_url, :medium_url, :name, :dob, :breed, :sex, :slug, :gallery_id
+  attributes :id, :rescue_id, :thumbnail_url, :large_url, :medium_url, :name, :dob, :breed, :sex, :slug, :gallery_id
 
   def thumbnail_url
     object.image.url :thumb
