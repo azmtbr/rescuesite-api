@@ -34,14 +34,15 @@ class AnimalsController < ApplicationController
   # PATCH/PUT /animals/1
   # PATCH/PUT /animals/1.json
   def update
-    if params[:image].present?
-      if @animal.update(update_params)
+    binding.pry
+    if params[:file].present?
+      if @animal.update(update_params.merge({image: params[:file]}))
         head :no_content
       else
         render json: @animal.errors, status: :unprocessable_entity
       end
     else
-      if @animal.update(update_params.merge({image: params[:file]}))
+      if @animal.update(update_params)
         head :no_content
       else
         render json: @animal.errors, status: :unprocessable_entity
