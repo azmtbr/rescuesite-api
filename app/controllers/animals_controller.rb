@@ -2,6 +2,7 @@ class AnimalsController < ApplicationController
   before_action :set_animal, only: [:show, :create, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :index]
 
+
   # GET /animals
   # GET /animals.json
   def index
@@ -33,10 +34,18 @@ class AnimalsController < ApplicationController
   # PATCH/PUT /animals/1
   # PATCH/PUT /animals/1.json
   def update
-    if @animal.update(animal_params)
-      @animal.update! image: params[:file]
+    if params[:image].present?
+      if @animal.update(update_params)
+        head :no_content
+      else
+        render json: @animal.errors, status: :unprocessable_entity
+      end
     else
-      render json: @animal.errors, status: :unprocessable_entity
+      if @animal.update(update_params.merge({image: params[:file]}))
+        head :no_content
+      else
+        render json: @animal.errors, status: :unprocessable_entity
+      end
     end
   end
 
@@ -55,6 +64,11 @@ class AnimalsController < ApplicationController
     end
 
     def animal_params
-      params.permit(:name, :breed, :sex, :dob)
+      params.require(:animal).permit(:name, :breed, :sex, :dob)
+    end
+
+    def update_params
+        # params.require(:image).permit(:name, :breed, :sex, :dob)
+        params.permit(:name, :breed, :sex, :dob)
     end
 end
