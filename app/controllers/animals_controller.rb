@@ -34,7 +34,6 @@ class AnimalsController < ApplicationController
   # PATCH/PUT /animals/1
   # PATCH/PUT /animals/1.json
   def update
-    binding.pry
     if params[:file].present?
       if @animal.update(update_params.merge({image: params[:file]}))
         head :no_content
@@ -69,7 +68,6 @@ class AnimalsController < ApplicationController
     end
 
     def update_params
-        # params.require(:image).permit(:name, :breed, :sex, :dob)
         params.permit(:name, :breed, :sex, :dob)
     end
 end
