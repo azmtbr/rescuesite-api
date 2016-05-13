@@ -64,10 +64,10 @@ class AnimalsController < ApplicationController
     end
 
     def animal_params
-      params.require(:animal).permit(:name, :breed, :sex, :dob)
+      params.require(:animal).permit(:name, :breed, :sex, :dob, :short_bio, :long_bio)
     end
 
     def update_params
-        params.permit(:name, :breed, :sex, :dob)
+        params.permit(:name, :breed, :sex, :dob, :short_bio, :long_bio)
     end
 end
