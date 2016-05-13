@@ -1,28 +1,5 @@
-== README
+## Rescue Site
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+While I've used template-based solutions such as Squarespace, Wix, and others to help rescues enhance their online presence, I've come to realize that these services need to be upgraded to cater to a wider range of uses. MyRescueSite is designed to offer specific features that a rescue employs in its day-to-day operations. My aim is to ensure that those features are as user-friendly and as efficient as possible.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+The app is being built with a Rails API as a back-end and using AngularJS for the front-end. I enjoy working with Angular and being able to take advantage of its two-way binding. I think its implementation will make for a great user experience, not only for the visitors to these sites, but for the animal rescue staff that has to edit and maintain them.
