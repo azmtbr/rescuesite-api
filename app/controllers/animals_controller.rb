@@ -1,5 +1,5 @@
 class AnimalsController < ApplicationController
-  before_action :set_animal, only: [:show, :create, :update, :destroy]
+  before_action :set_animal, only: [:show, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :index]
 
 
@@ -25,7 +25,7 @@ class AnimalsController < ApplicationController
     @animal.gallery = Gallery.new
 
     if @animal.save
-      render json: @animal, status: :created, location: @animal
+      render json: @animal, status: :created
     else
       render json: @animal.errors, status: :unprocessable_entity
     end
@@ -64,7 +64,7 @@ class AnimalsController < ApplicationController
     end
 
     def animal_params
-      params.require(:animal).permit(:name, :breed, :sex, :dob, :short_bio, :long_bio)
+      params.permit(:name, :breed, :sex, :dob, :short_bio, :long_bio)
     end
 
     def update_params
